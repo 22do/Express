@@ -8,35 +8,32 @@ let arr = [
   {id : 115 ,name : 'The Rock'}
 ]
 
+let hasil 
+let tulisan = []
+let ids = (x) => {
+  for(let i = 0; i<arr.length; i++){
+    if(arr[i].id == x){
+      tulisan = arr[i]
+      hasil = arr[i].id
+      return true
+    }
+  }
+}
 
 app.get('/',(req,res)=>{
-  //res.send('<h1>Hello Silahkan Ketik</h1> localhost:3000/welcome')
   res.sendFile('./index.html',{root: __dirname})
 })
 
 app.get('/students',(req,res)=>{
   res.json(arr)
-  //res.sendFile('./daftar murid.html',{root: __dirname})
 })
 
 app.get('/student/:idNyaStudent',(req,res)=>{
   console.log(req.params.idNyaStudent)
   let id = req.params.idNyaStudent
-  let hasil = 00000000000
-  let tulisan = []
-  let ids = (x) => {
-    for(let i = 0; i<arr.length; i++){
-      if(arr[i].id == x){
-        tulisan = arr[i]
-        hasil += arr[i].id
-        console.log(hasil)
-        return true
-      }
-    }
-  }
   let ketemu = ids(id)
   if(ketemu){
-    res.send(tulisan)//to do
+    res.json(tulisan)
   }
   else{
     res.status(404)
