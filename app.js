@@ -21,7 +21,7 @@ let ids = (x) => {
 };
 
 app.get("/", (req, res) => {
-  res.sendFile("./index.html", { root: __dirname });
+  res.sendFile('Welcome');
 });
 
 app.get("/students", (req, res) => {

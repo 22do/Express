@@ -8,6 +8,18 @@ function randomNumber(){
   return Math.floor(Math.random()*89999)+10000
 }
 
+let tulisan = []
+let ids = (x) => {
+let hasil 
+  for(let i = 0; i<arr.length; i++){
+    if(arr[i].id == x){
+      tulisan = arr[i]
+      hasil = arr[i].id
+      return true
+    }
+  }
+}
+
 app.get('/',(req, res)=>{
  res.send('<h1>student API</h1>')
 })
@@ -26,17 +38,6 @@ app.get('/students',(req, res)=>{
 
 app.get('/student/:idStudent',(req, res)=>{
   let idss = req.params.idStudent
-  let hasil 
-  let tulisan = []
-  let ids = (x) => {
-    for(let i = 0; i<arr.length; i++){
-      if(arr[i].id == x){
-        tulisan = arr[i]
-        hasil = arr[i].id
-        return true
-      }
-    }
-  }
   let ketemu = ids(idss)
   if(ketemu){
     res.json(tulisan)
