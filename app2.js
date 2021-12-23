@@ -8,14 +8,10 @@ function randomNumber(){
   return Math.floor(Math.random()*89999)+10000
 }
 
-let tulisan = []
-let ids = (x) => {
-let hasil 
+let cariStudent = (x) => {
   for(let i = 0; i<arr.length; i++){
     if(arr[i].id == x){
-      tulisan = arr[i]
-      hasil = arr[i].id
-      return true
+      return arr[i]
     }
   }
 }
@@ -37,10 +33,10 @@ app.get('/students',(req, res)=>{
 })
 
 app.get('/student/:idStudent',(req, res)=>{
-  let idss = req.params.idStudent
-  let ketemu = ids(idss)
+  let idStudent = req.params.idStudent
+  let ketemu = cariStudent(idStudent)
   if(ketemu){
-    res.json(tulisan)
+    res.json(ketemu)
   }
   else{
     res.status(404)
